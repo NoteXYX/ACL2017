@@ -189,7 +189,9 @@ def evaluate_multiple_datasets(generator, data_loaders, opt, title='', epoch=1, 
 
 
 def evaluate_beam_search(generator, data_loader, opt, title='', epoch=1, predict_save_path=None):
-    logger = config.init_logging(title, predict_save_path + '/%s.log' % title, redirect_to_stdout=False)
+    if not os.path.exists(predict_save_path):
+        os.makedirs(predict_save_path)
+    logger = config.init_logging(title, os.path.join(predict_save_path, '%s.log' % title), redirect_to_stdout=False)
     progbar = Progbar(logger=logger, title=title, target=len(data_loader), batch_size=data_loader.batch_size,
                       total_examples=len(data_loader.dataset))
 

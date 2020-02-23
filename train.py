@@ -508,11 +508,11 @@ def train_model(model, optimizer_ml, optimizer_rl, criterion, train_data_loader,
                 valid_score_dict =  evaluate.evaluate_multiple_datasets(generator, valid_data_loaders, opt,
                                                                         epoch=epoch,
                                                                         title='valid.epoch=%d.total_batch=%d' % (epoch, total_batch),
-                                                                        predict_save_path=opt.pred_path + '/epoch%d_batch%d_total_batch%d/' % (epoch, batch_i, total_batch))
+                                                                        predict_save_path=os.path.join(opt.pred_path, 'epoch%d_batch%d_total_batch%d' % (epoch, batch_i, total_batch)))
                 test_score_dict = evaluate.evaluate_multiple_datasets(generator, test_data_loaders, opt,
                                                                       epoch=epoch,
                                                                       title='test.epoch=%d.total_batch=%d' % (epoch, total_batch),
-                                                                      predict_save_path=opt.pred_path + '/epoch%d_batch%d_total_batch%d/' % (epoch, batch_i, total_batch))
+                                                                      predict_save_path=os.path.join(opt.pred_path, 'epoch%d_batch%d_total_batch%d' % (epoch, batch_i, total_batch)))
 
                 '''
                 Merge scores of current round into history_score

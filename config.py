@@ -44,14 +44,14 @@ def init_opt(description):
         opt.exp_path = opt.exp_path % (opt.exp, opt.timemark)
 
     # Path to outputs of predictions.
-    setattr(opt, 'pred_path', os.path.join(opt.exp_path, 'pred/'))
+    setattr(opt, 'pred_path', os.path.join(opt.exp_path, 'pred'))
     # Path to checkpoints.
-    setattr(opt, 'model_path', os.path.join(opt.exp_path, 'model/'))
+    setattr(opt, 'model_path', os.path.join(opt.exp_path, 'model'))
     # Path to log output.
-    setattr(opt, 'log_path', os.path.join(opt.exp_path, 'log/'))
+    setattr(opt, 'log_path', os.path.join(opt.exp_path, 'log'))
     setattr(opt, 'log_file', os.path.join(opt.log_path, 'output.log'))
     # Path to plots.
-    setattr(opt, 'plot_path', os.path.join(opt.exp_path, 'plot/'))
+    setattr(opt, 'plot_path', os.path.join(opt.exp_path, 'plot'))
 
     if not os.path.exists(opt.exp_path):
         os.makedirs(opt.exp_path)
@@ -66,7 +66,7 @@ def init_opt(description):
 
     if opt.exp.startswith('kp20k'):
         # opt.test_dataset_names = ['inspec', 'nus', 'semeval', 'krapivin', 'kp20k', 'duc']
-        opt.test_dataset_names = ['kp20k', 'semeval', 'krapivin', 'kp20k']
+        opt.test_dataset_names = ['inspec', 'semeval', 'krapivin', 'kp20k']
     elif opt.exp.startswith('stackexchange'):
         opt.test_dataset_names = ['stackexchange']
     elif opt.exp.startswith('twacg'):
@@ -412,7 +412,7 @@ def train_opts(parser):
                         help="Print stats at this interval.")
     parser.add_argument('-exp', type=str, default="kp20k",
                         help="Name of the experiment for logging.")
-    parser.add_argument('-exp_path', type=str, default="exp/%s.%s",
+    parser.add_argument('-exp_path', type=str, default=os.path.join("exp", "%s.%s"),
                         help="Path of experiment log/plot.")
     # parser.add_argument('-pred_path', type=str, default="pred/%s.%s",
     #                     help="Path of outputs of predictions.")
