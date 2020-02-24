@@ -28,7 +28,10 @@ import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
+from signal import signal, SIGPIPE, SIG_DFL
 
+# 让 python 忽略 SIGPIPE 信号，并且不抛出异常
+signal(SIGPIPE,SIG_DFL)
 def to_cpu_list(input):
     assert isinstance(input, list)
     output = [int(item.data.cpu().numpy()) for item in input]
