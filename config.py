@@ -300,7 +300,7 @@ def train_opts(parser):
                         reproducibility.""")
 
     # Init options
-    parser.add_argument('-epochs', type=int, default=100,
+    parser.add_argument('-epochs', type=int, default=10,
                         help='Number of training epochs')
     parser.add_argument('-start_epoch', type=int, default=1,
                         help='The epoch from which to start')
