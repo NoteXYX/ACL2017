@@ -19,9 +19,9 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 # **Preprocess Options**
-parser.add_argument('-dataset_name', required=True, default='kp20k',
+parser.add_argument('-dataset_name', default='kp20k',
                     help="Name of dataset")
-parser.add_argument('-source_dataset_dir', required=True, default='source_data/',
+parser.add_argument('-source_dataset_dir', default='source_data/',
                     help="The path to the source data (raw json).")
 parser.add_argument('-output_path_prefix', default='data',
                     help="Output file for the prepared data")
@@ -30,9 +30,9 @@ config.preprocess_opts(parser)
 opt = parser.parse_args()
 
 # input path of each json file
-opt.source_train_file = os.path.join(opt.source_dataset_dir, '%s_training.json' % (opt.dataset_name))
-opt.source_valid_file = os.path.join(opt.source_dataset_dir, '%s_validation.json' % (opt.dataset_name))
-opt.source_test_file = os.path.join(opt.source_dataset_dir, '%s_testing.json' % (opt.dataset_name))
+opt.source_train_file = os.path.join(opt.source_dataset_dir, '%s_train.json' % (opt.dataset_name))
+opt.source_valid_file = os.path.join(opt.source_dataset_dir, '%s_valid.json' % (opt.dataset_name))
+opt.source_test_file = os.path.join(opt.source_dataset_dir, '%s_test.json' % (opt.dataset_name))
 
 # output path for exporting the processed dataset
 opt.output_path = os.path.join(opt.output_path_prefix, opt.dataset_name)

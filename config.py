@@ -22,7 +22,8 @@ def init_opt(description):
     if opt.seed > 0:
         torch.manual_seed(opt.seed)
 
-    if torch.cuda.is_available() and not opt.gpuid:
+    # if torch.cuda.is_available() and not opt.gpuid:
+    if torch.cuda.is_available():
         opt.gpuid = 0
 
     if hasattr(opt, 'train_ml') and opt.train_ml:
