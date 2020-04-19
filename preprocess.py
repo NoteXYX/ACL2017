@@ -19,9 +19,9 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 # **Preprocess Options**
-parser.add_argument('-dataset_name', required=True,
+parser.add_argument('-dataset_name', required=True, default='kp20k',
                     help="Name of dataset")
-parser.add_argument('-source_dataset_dir', required=True,
+parser.add_argument('-source_dataset_dir', required=True, default='source_data/',
                     help="The path to the source data (raw json).")
 parser.add_argument('-output_path_prefix', default='data',
                     help="Output file for the prepared data")
